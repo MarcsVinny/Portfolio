@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfólio profissional de Marcos Vinícius de Oliveira Teixeira, estudante de Análise e Desenvolvimento de Sistemas.">
+    <title>Portfólio - Marcos Vinícius</title>
+</head>
+
+<body>
+
+    <!-- Cabeçalho Principal e Navegação Semântica -->
+    <header>
+        <h1>Marcos Vinícius</h1>
+        <nav aria-label="Navegação principal">
+            <ul>
+                <li><a href="#sobre">Sobre mim</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#projetos">Projetos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main>
+
+        <!-- Seção: Sobre mim -->
+        <section id="sobre">
+            <h2>Sobre mim</h2>
+
+            <!-- 👉 IMAGEM DE PERFIL 👈 -->
+            <img src="fotoPortfolio.jpeg" alt="Foto de perfil de Marcos Vinícius" width="200">
+
+            <p>Olá, meu nome é Marcos Vinícius de Oliveira Teixeira.</p>
+            <p>Sou estudante de Análise e Desenvolvimento de Sistemas, com foco em desenvolvimento web. Tenho
+                experiência prática com TypeScript, onde possuo nível intermediário e cerca de um ano de prática,
+                desenvolvendo projetos que me ajudaram a consolidar meus conhecimentos.</p>
+            <p>Ao longo da minha trajetória, já desenvolvi alguns sistemas relevantes, como uma agenda para organização
+                de tarefas, um sistema de gestão voltado para advogados com controle de processos e prazos, e também um
+                projeto de triagem para serviços públicos, com o objetivo de organizar e priorizar demandas urbanas.</p>
+            <p>Tenho interesse em criar soluções que sejam úteis no dia a dia das pessoas, sempre buscando unir
+                tecnologia e praticidade. Além disso, estou em constante evolução, estudando e aprimorando minhas
+                habilidades para me tornar um profissional cada vez mais completo na área de desenvolvimento de
+                software.</p>
+
+            <!-- 👉 MÍDIA DE APRESENTAÇÃO 👈 -->
+            <figure>
+                <figcaption>Ouça uma breve mensagem de apresentação minha:</figcaption>
+                <audio controls>
+                    <source src="audioPortfolio.ogg" type="audio/ogg">
+                    Seu navegador não suporta a reprodução deste áudio.
+                </audio>
+            </figure>
+        </section>
+
+        <!-- Seção: Experiência Tabela -->
+        <section id="experiencia">
+            <h2>Experiência e Habilidades</h2>
+
+            <!-- Tabela de Habilidades -->
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th scope="col">Tecnologia</th>
+                        <th scope="col">Nível de Conhecimento</th>
+                        <th scope="col">Tempo de Prática</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TypeScript</td>
+                        <td>Intermediário</td>
+                        <td>1 ano</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Em aprendizagem contínua para expandir o domínio de novas ferramentas.</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
+
+        <!-- Seção: Formação Acadêmica -->
+        <section id="formacao">
+            <h2>Formação Acadêmica</h2>
+            <ul>
+                <li><strong>Análise e Desenvolvimento de Sistemas</strong> (Em andamento)</li>
+            </ul>
+        </section>
+
+        <!-- Seção: Projetos com Lista dl de Definição -->
+        <section id="projetos">
+            <h2>Projetos de Destaque</h2>
+
+            <dl>
+                <dt>Agenda de tarefas</dt>
+                <dd>Aplicação voltada para organização e planejamento contínuo de tarefas no cotidiano, auxiliando na
+                    gestão de tempo.</dd>
+
+                <dt>Sistema para advogados (processos e prazos)</dt>
+                <dd>Plataforma de gestão voltada para rotinas jurídicas, permitindo o acompanhamento de processos e
+                    controle de prazos com eficácia.</dd>
+
+                <dt>Sistema de triagem de serviços públicos</dt>
+                <dd>Projeto com o objetivo de organizar e priorizar demandas urbanas, direcionando solicitações e
+                    melhorando o controle público do atendimento.</dd>
+            </dl>
+        </section>
+
+        <!-- Seção: Contato com Formulário -->
+        <section id="contato">
+            <h2>Entre em Contato</h2>
+
+            <form action="#" method="POST">
+                <fieldset>
+                    <legend>Fale Comigo</legend>
+
+                    <p>
+                        <label for="nome">Nome Completo:</label><br>
+                        <input type="text" id="nome" name="nome" required>
+                    </p>
+
+                    <p>
+                        <label for="email">E-mail Profissional:</label><br>
+                        <input type="email" id="email" name="email" required>
+                    </p>
+
+                    <p>
+                        <label for="telefone">Telefone (Whatsapp):</label><br>
+                        <!-- Validação baseada no Pattern Brasileiro apenas com números -->
+                        <input type="tel" id="telefone" name="telefone" pattern="[0-9]{10,11}"
+                            title="Informe seu telefone com DDD, digitando apenas os números (10 a 11 dígitos)"
+                            required>
+                    </p>
+
+                    <p>
+                        <label for="assunto">Assunto da Mensagem:</label><br>
+                        <select id="assunto" name="assunto" required>
+                            <option value="" disabled selected>Escolha um assunto na lista</option>
+                            <option value="orcamento">Orçamento de Projeto</option>
+                            <option value="duvida">Dúvida Técnica</option>
+                            <option value="elogio">Elogio ou Feedback</option>
+                        </select>
+                    </p>
+
+                    <!-- Fieldset aninhado exigido semanticamente para agrupamento de Radio Buttons -->
+                    <fieldset>
+                        <legend>Como nos conheceu?</legend>
+                        <label><input type="radio" name="como_conheceu" value="linkedin" required> LinkedIn</label><br>
+                        <label><input type="radio" name="como_conheceu" value="github"> GitHub</label><br>
+                        <label><input type="radio" name="como_conheceu" value="indicacao"> Indicação</label>
+                    </fieldset>
+
+                    <p>
+                        <label for="urgencia">Urgência para o retorno (1 a 10):</label><br>
+                        <input type="range" id="urgencia" name="urgencia" min="1" max="10" value="5">
+                    </p>
+
+                    <p>
+                        <label for="mensagem">Mensagem / Detalhes do Projeto:</label><br>
+                        <textarea id="mensagem" name="mensagem" required rows="5" cols="40"></textarea>
+                    </p>
+
+                    <button type="submit">Enviar Mensagem</button>
+                </fieldset>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Marcos Vinícius de Oliveira Teixeira.</p>
+        <p>
+            <a href="https://www.linkedin.com/in/marcos-vinicius-de-oliveira-teixeira/" target="_blank">LinkedIn</a> |
+            <a href="https://github.com/marcos-vinicius" target="_blank">GitHub</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>
