@@ -7,29 +7,430 @@
     <meta name="description"
         content="Portfólio profissional de Marcos Vinícius de Oliveira Teixeira, estudante de Análise e Desenvolvimento de Sistemas.">
     <title>Portfólio - Marcos Vinícius</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+
+        /* Variáveis de Cores (Dark Neon com Preto, Roxo, Vinho e Neon) */
+        :root {
+            --bg-color: #000000; /* Preto absoluto no Fundo */
+            --surface-color: #0d0117; /* Roxo super escuro nos Cards */
+            --field-bg: #1e0938; /* Roxo pros inputs e fundos de tabela */
+            --text-primary: #ffffff; /* Branco absoluto */
+            --text-secondary: #d4d4d4; /* Cinza claro elegante / Off-white */
+            --accent-color: #00f0ff; /* Azul Neon */
+            --wine-color: #610e20; /* Vermelho Vinho / Bordô elegante */
+            --border-color: #3d1b54; /* Borda roxa sólida */
+        }
+
+        /* Reset Básico e Tipografia */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Classes Utilitárias */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Centralizando os textos cinzas (secundários) */
+        p,
+        .subtitle,
+        figcaption,
+        tfoot td,
+        ul li,
+        dl dd {
+            color: var(--text-secondary);
+        }
+
+        /* Centralizando elementos com cor Destaque Neon */
+        .highlight,
+        dl dt,
+        footer a,
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.8);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 240, 255, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .btn {
+            background-color: var(--wine-color); /* Botão principal cor de vinho */
+            color: #fff; /* Neon combina forte com vinho */
+            border: 1px solid var(--wine-color);
+            padding: 12px 30px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: #000;
+            border-color: var(--accent-color);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--accent-color);
+        }
+
+        /* Header e Navegação */
+        header {
+            text-align: center;
+            padding: 60px 20px 30px;
+            /* Gradiente unindo o Vinho no topo mergulhando no Preto absoluto */
+            background: linear-gradient(180deg, var(--wine-color) 0%, var(--bg-color) 100%);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        nav {
+            margin-top: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Seções Gerais */
+        main {
+            padding: 60px 0;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #fff;
+            display: inline-block;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 5px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Sobre Mim */
+        #sobre {
+            text-align: center;
+        }
+
+        #sobre img {
+            display: block;
+            margin: 0 auto 30px;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.5), 0 0 10px rgba(0, 240, 255, 0.3) inset;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #sobre img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 35px rgba(0, 240, 255, 0.8), 0 0 15px rgba(0, 240, 255, 0.5) inset;
+        }
+
+        #sobre p {
+            max-width: 800px;
+            margin: 0 auto 15px;
+            text-align: left;
+        }
+
+        figure {
+            margin-top: 40px;
+            background-color: var(--field-bg);
+            padding: 20px;
+            border-radius: 12px;
+            display: inline-block;
+            border: 1px solid var(--border-color);
+        }
+
+        figcaption {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        audio {
+            outline: none;
+            border-radius: 30px;
+        }
+
+        /* Tabela Experiência */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: var(--surface-color);
+            border-radius: 8px;
+            overflow: hidden;
+            border: none;
+        }
+
+        thead {
+            background-color: var(--wine-color);
+            color: #fff;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            font-weight: 600;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: var(--field-bg);
+        }
+
+        tbody tr {
+            transition: background-color 0.3s;
+        }
+
+        tbody tr:hover {
+            background-color: var(--border-color);
+        }
+
+        tfoot td {
+            font-size: 0.85rem;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        /* Formação e Projetos */
+        ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+
+        dl dt {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 5px;
+        }
+
+        dl dd {
+            margin-left: 0;
+            padding-left: 15px;
+            border-left: 2px solid var(--border-color);
+            line-height: 1.5;
+        }
+
+        /* Contato */
+        fieldset {
+            border: none;
+            padding: 0;
+        }
+
+        legend {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        :is(input[type="text"], input[type="email"], input[type="tel"], select, textarea) {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            background-color: var(--field-bg);
+            color: #fff;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        :is(input:not([type="radio"]):not([type="range"]), select, textarea):focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+        }
+
+        /* Fieldset Aninhado */
+        fieldset fieldset {
+            background-color: var(--field-bg);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        fieldset fieldset legend {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            padding: 0 10px;
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+            accent-color: var(--accent-color);
+        }
+
+        label:has(input[type="radio"]) {
+            display: inline-flex;
+            align-items: center;
+            width: auto;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            accent-color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #050005;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        footer a {
+            text-decoration: none;
+            font-weight: 600;
+            margin: 0 10px;
+            transition: text-shadow 0.3s;
+        }
+
+        footer a:hover {
+            text-shadow: 0 0 8px var(--accent-color);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <!-- Cabeçalho Principal e Navegação Semântica -->
     <header>
-        <h1>Marcos Vinícius</h1>
-        <nav aria-label="Navegação principal">
-            <ul>
-                <li><a href="#sobre">Sobre mim</a></li>
-                <li><a href="#experiencia">Experiência</a></li>
-                <li><a href="#formacao">Formação</a></li>
-                <li><a href="#projetos">Projetos</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <h1 class="highlight">Marcos Vinícius</h1>
+            <p class="subtitle">Desenvolvedor Web em Formação</p>
+            <nav aria-label="Navegação principal">
+                <ul>
+                    <li><a href="#sobre">Sobre mim</a></li>
+                    <li><a href="#experiencia">Experiência</a></li>
+                    <li><a href="#formacao">Formação</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <!-- Conteúdo Principal -->
-    <main>
+    <main class="container">
 
         <!-- Seção: Sobre mim -->
-        <section id="sobre">
+        <section id="sobre" class="card">
             <h2>Sobre mim</h2>
 
             <!-- 👉 IMAGEM DE PERFIL 👈 -->
@@ -58,11 +459,11 @@
         </section>
 
         <!-- Seção: Experiência Tabela -->
-        <section id="experiencia">
+        <section id="experiencia" class="card">
             <h2>Experiência e Habilidades</h2>
 
             <!-- Tabela de Habilidades -->
-            <table border="1">
+            <table>
                 <thead>
                     <tr>
                         <th scope="col">Tecnologia</th>
@@ -104,14 +505,15 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="3">Sempre em adaptação e aprendizado contínuo para agregar novas tecnologias à minha caixa de ferramentas.</td>
+                        <td colspan="3">Sempre em adaptação e aprendizado contínuo para agregar novas tecnologias à
+                            minha caixa de ferramentas.</td>
                     </tr>
                 </tfoot>
             </table>
         </section>
 
         <!-- Seção: Formação Acadêmica -->
-        <section id="formacao">
+        <section id="formacao" class="card">
             <h2>Formação Acadêmica</h2>
             <ul>
                 <li><strong>Análise e Desenvolvimento de Sistemas</strong> (Em andamento)</li>
@@ -119,7 +521,7 @@
         </section>
 
         <!-- Seção: Projetos com Lista dl de Definição -->
-        <section id="projetos">
+        <section id="projetos" class="card">
             <h2>Projetos de Destaque</h2>
 
             <dl>
@@ -138,7 +540,7 @@
         </section>
 
         <!-- Seção: Contato com Formulário -->
-        <section id="contato">
+        <section id="contato" class="card">
             <h2>Entre em Contato</h2>
 
             <form action="#" method="POST">
@@ -146,17 +548,17 @@
                     <legend>Fale Comigo</legend>
 
                     <p>
-                        <label for="nome">Nome Completo:</label><br>
+                        <label for="nome">Nome Completo:</label>
                         <input type="text" id="nome" name="nome" required>
                     </p>
 
                     <p>
-                        <label for="email">E-mail Profissional:</label><br>
+                        <label for="email">E-mail Profissional:</label>
                         <input type="email" id="email" name="email" required>
                     </p>
 
                     <p>
-                        <label for="telefone">Telefone (Whatsapp):</label><br>
+                        <label for="telefone">Telefone (Whatsapp):</label>
                         <!-- Validação baseada no Pattern Brasileiro apenas com números -->
                         <input type="tel" id="telefone" name="telefone" pattern="[0-9]{10,11}"
                             title="Informe seu telefone com DDD, digitando apenas os números (10 a 11 dígitos)"
@@ -164,7 +566,7 @@
                     </p>
 
                     <p>
-                        <label for="assunto">Assunto da Mensagem:</label><br>
+                        <label for="assunto">Assunto da Mensagem:</label>
                         <select id="assunto" name="assunto" required>
                             <option value="" disabled selected>Escolha um assunto na lista</option>
                             <option value="orcamento">Orçamento de Projeto</option>
@@ -176,22 +578,22 @@
                     <!-- Fieldset aninhado exigido semanticamente para agrupamento de Radio Buttons -->
                     <fieldset>
                         <legend>Como nos conheceu?</legend>
-                        <label><input type="radio" name="como_conheceu" value="linkedin" required> LinkedIn</label><br>
-                        <label><input type="radio" name="como_conheceu" value="github"> GitHub</label><br>
+                        <label><input type="radio" name="como_conheceu" value="linkedin" required> LinkedIn</label>
+                        <label><input type="radio" name="como_conheceu" value="github"> GitHub</label>
                         <label><input type="radio" name="como_conheceu" value="indicacao"> Indicação</label>
                     </fieldset>
 
                     <p>
-                        <label for="urgencia">Urgência para o retorno (1 a 10):</label><br>
+                        <label for="urgencia">Urgência para o retorno (1 a 10):</label>
                         <input type="range" id="urgencia" name="urgencia" min="1" max="10" value="5">
                     </p>
 
                     <p>
-                        <label for="mensagem">Mensagem / Detalhes do Projeto:</label><br>
+                        <label for="mensagem">Mensagem / Detalhes do Projeto:</label>
                         <textarea id="mensagem" name="mensagem" required rows="5" cols="40"></textarea>
                     </p>
 
-                    <button type="submit">Enviar Mensagem</button>
+                    <button type="submit" class="btn">Enviar Mensagem</button>
                 </fieldset>
             </form>
         </section>
